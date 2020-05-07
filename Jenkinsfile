@@ -1,6 +1,7 @@
 pipeline {
     agent any
     environment {
+        //be sure to replace "willbla" with your own Docker Hub username
         DOCKER_IMAGE_NAME = "docker2mfried/train-schedule"
     }
     stages {
@@ -44,11 +45,7 @@ pipeline {
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'train-schedule-kube.yml',
-                    enableConfigSubstitution: true
-                )
+                //implement Kubernetes deployment here
             }
         }
     }
